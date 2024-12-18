@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Sumber Ganda Mekar</title>
+
+    <!-- Link ke Font Awesome untuk Ikon Sosial Media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link ke Google Fonts untuk Pemilihan Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Link ke CSS Eksternal -->
+    <style>
+        /* assets/styles/style.css */
+
+/* CSS Variables for Theme */
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #FF6584;
+    --background-color: #f0f2f5;
+    --text-color: #333;
+    --light-bg: #ffffff;
+    --dark-bg: #1a1a1a;
+    --transition-speed: 0.3s;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+/* Navbar Styles */
+header {
+    background: var(--light-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo h1 {
+    margin-left: 20px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+
+.logo h1:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    margin-right: 20px;
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width var(--transition-speed);
+}
+
+.nav-menu li a:hover {
+    color: var(--primary-color);
+}
+
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    margin-right: 20px;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    height: 3px;
+    width: 30px;
+    background: var(--text-color);
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: all var(--transition-speed);
+}
+
+/* Home Section */
+.home {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 70px; /* To offset fixed navbar */
+    overflow: hidden;
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    animation: rotateBackground 20s linear infinite;
+    z-index: 1;
+}
+
+.home-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.home-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    padding: 15px 40px;
+    background: #fff;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background var(--transition-speed), color var(--transition-speed);
+    box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
+}
+
+.cta-button:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 12px 20px rgba(108, 99, 255, 0.4);
+}
+
+/* Gallery Section */
+.gallery {
+    background: var(--light-bg);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(60deg, transparent, var(--primary-color), transparent);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.gallery h2 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.gallery p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+.gallery-slider {
+    position: relative;
+}
+
+.slider-container {
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.slide img:hover {
+    transform: scale(1.05);
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(108, 99, 255, 0.8);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(108, 99, 255, 0.8);
+    border: none;
+    color: #fff;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+    z-index: 2;
+}
+
+.slider-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+.slider-dots {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    height: 14px;
+    width: 14px;
+    background: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+.dot.active, .dot:hover {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Contact Section */
+.contact {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    animation: moveBackground 15s linear infinite;
+    z-index: 1;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 2;
+}
+
+.contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: #ddd;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-item i {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-right: 15px;
+    transition: color var(--transition-speed);
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+}
+
+/* Location Section */
+.location {
+    background: var(--light-bg);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.location h2 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.location p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+.map-container {
+    width: 100%;
+    height: 500px;
+    border: 3px solid var(--primary-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.map-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 25px rgba(108, 99, 255, 0.3);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--dark-bg);
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    border-top: 3px solid var(--primary-color);
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .home-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .gallery h2, .contact h2, .location h2 {
+        font-size: 2.5rem;
+    }
+
+    .contact-info {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--light-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left var(--transition-speed);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 20px 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .home-content h2 {
+        font-size: 2rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+    }
+
+    .slide img {
+        height: 300px;
+    }
+
+    .contact-info {
+        flex-direction: column;
+    }
+
+    .contact-item {
+        margin: 15px 0;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .gallery h2, .contact h2, .location h2 {
+        font-size: 2.2rem;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    .contact-item i {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateBackground {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveBackground {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar (Navigation Bar) -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>PT. Sumber Ganda Mekar</h1>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#gallery">Galeri Kami</a></li>
+                <li><a href="#contact">Kontak Kami</a></li>
+                <li><a href="#location">Lokasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="home-overlay"></div>
+        <div class="home-content">
+            <h2>Selamat Datang di PT. Sumber Ganda Mekar</h2>
+            <p>Perusahaan Besi & Besi Tua Terpercaya</p>
+            <a href="login.php" class="cta-button">Masuk</a>
+        </div>
+    </section>
+
+    <!-- Galeri Kami Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Galeri Kami</h2>
+            <p>Jelajahi berbagai dokumentasi dan kegiatan kami</p>
+            
+            <div class="gallery-slider">
+                <div class="slider-container">
+                    <div class="slider-wrapper">
+                        <div class="slide">
+                            <img src="assets/images/3.jpg" alt="Kegiatan Pengolahan Besi">
+                            <div class="slide-caption">Gedung Perusahaan</div>
+                        </div>
+                        <div class="slide">
+                            <img src="assets/images/6.jpg" alt="Gudang Penyimpanan">
+                            <div class="slide-caption">Gudang Penyimpanan</div>
+                        </div>
+                        <div class="slide">
+                            <img src="assets/images/1.jpg" alt="Tim Profesional">
+                            <div class="slide-caption">Transportasi</div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn prev-btn">&larr;</button>
+                    <button class="slider-btn next-btn">&rarr;</button>
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Kami Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Kontak Kami</h2>
+            <p>Hubungi kami melalui cara berikut:</p>
+
+            <div class="contact-info">
+                <!-- Nomor Telepon -->
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+62227536459">Telp: 022-7536459</a>
+                </div>
+
+                <!-- Tombol WhatsApp -->
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/6283870405395" target="_blank">Chat via WhatsApp</a>
+                </div>
+
+                <!-- Akun Instagram -->
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/ptsumbergandamekar/" target="_blank">Instagram: @ptsumbergandamekar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokasi Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <h2>Lokasi Kami</h2>
+            <p>Temukan kami di lokasi berikut:</p>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.110222501665!2d107.686446!3d-6.9433256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c2befe453ed7%3A0xb68186fe99033614!2sPT.%20Sumber%20Ganda%20Mekar!5e0!3m2!1sen!2sid!4v1603310803235!5m2!1sen!2sid" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 PT. Sumber Ganda Mekar. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider-wrapper');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const dots = document.querySelectorAll('.dot');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                currentSlide = (index + totalSlides) % totalSlides;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+
+        // Animasi scroll untuk hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.home-content');
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 100) {
+                hero.style.transform = 'translateY(20px)';
+                hero.style.opacity = '0.8';
+            } else {
+                hero.style.transform = 'translateY(0)';
+                hero.style.opacity = '1';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
